@@ -1,43 +1,35 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>视频播放器</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片跳转页面</title>
     <style>
-        body { margin: 0; padding: 0; overflow: hidden; background: black; }
-        video { width: 100vw; height: 100vh; object-fit: contain; }
-        .overlay { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0,0,0,0.5); color: white; text-align: center; 
-            display: flex; align-items: center; justify-content: center; 
-            z-index: 1000; 
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
-    <video id="videoPlayer" controls autoplay muted playsinline>
-        <source id="videoSource" src="" type="video/mp4">
-        您的浏览器不支持视频播放
-    </video>
-    <div class="overlay" id="overlay">点击以播放</div>
-    <script>
-        const videoId = window.location.pathname.split('/').pop().replace('.mp4', '');
-        if (videoId) {
-            const video = document.getElementById('videoPlayer');
-            const videoSource = document.getElementById('videoSource');
-            const overlay = document.getElementById('overlay');
-            videoSource.src = `${videoId}.mp4`;
-            video.load();
-            video.addEventListener('canplay', function() {
-                video.play().catch(error => console.error('自动播放失败:', error));
-                video.requestFullscreen().catch(error => console.error('全屏失败:', error));
-            }, { once: true });
-            overlay.addEventListener('click', function() {
-                video.play();
-                video.requestFullscreen();
-                overlay.style.display = 'none';
-            });
-        }
-    </script>
+    <button onclick="window.location.href='https://a.jm9u.com/upload/4/20250512/8896320a8b7eac6d0cb9212f44958e59.jpg'">查看图片</button>
 </body>
 </html>
+
